@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>OMG MOONUU</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Segoe UI', sans-serif;
+    }
+
+    body{
+      height:100vh;
+      overflow:hidden;
+      background: radial-gradient(circle at top, #13233f, #040812 80%);
+      color:white;
+      position:relative;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:20px;
+    }
+
+    /* Falling stars */
+    .star{
+      position:absolute;
+      width:2px;
+      height:2px;
+      background:white;
+      border-radius:50%;
+      opacity:0.8;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall{
+      0%{
+        transform:translateY(-100vh) translateX(0);
+        opacity:0;
+      }
+      10%{
+        opacity:1;
+      }
+      100%{
+        transform:translateY(100vh) translateX(50px);
+        opacity:0;
+      }
+    }
+
+    /* Moon */
+    .moon{
+      position:absolute;
+      top:50px;
+      right:70px;
+      width:130px;
+      height:130px;
+      border-radius:50%;
+      background:#f4f7ff;
+      box-shadow:
+        0 0 25px rgba(255,255,255,0.9),
+        0 0 60px rgba(201,220,255,0.7),
+        0 0 100px rgba(168,191,255,0.4);
+      z-index:1;
+    }
+
+    .content{
+      position:relative;
+      z-index:2;
+      max-width:850px;
+      text-align:center;
+      animation:fadeIn 2s ease;
+    }
+
+    h1{
+      font-size:4rem;
+      margin-bottom:30px;
+      color:#dce8ff;
+      letter-spacing:4px;
+      text-shadow:
+        0 0 10px rgba(220,232,255,0.9),
+        0 0 30px rgba(173,201,255,0.5);
+    }
+
+    p{
+      font-size:1.15rem;
+      line-height:2;
+      color:#d4dcf5;
+      padding:0 10px;
+      text-shadow:0 0 10px rgba(255,255,255,0.08);
+    }
+
+    .btn{
+      margin-top:45px;
+      padding:14px 45px;
+      border:none;
+      border-radius:40px;
+      background:#9ec5ff;
+      color:#041120;
+      font-size:1rem;
+      font-weight:bold;
+      cursor:pointer;
+      transition:0.3s ease;
+      box-shadow:
+        0 0 20px rgba(158,197,255,0.9),
+        0 0 50px rgba(158,197,255,0.5);
+    }
+
+    .btn:hover{
+      transform:scale(1.08);
+      box-shadow:
+        0 0 30px rgba(200,225,255,1),
+        0 0 70px rgba(158,197,255,0.8);
+    }
+
+    @keyframes fadeIn{
+      from{
+        opacity:0;
+        transform:translateY(20px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    @media(max-width:768px){
+      h1{
+        font-size:2.5rem;
+      }
+
+      p{
+        font-size:1rem;
+        line-height:1.8;
+      }
+
+      .moon{
+        width:90px;
+        height:90px;
+        right:25px;
+        top:25px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- Moon -->
+  <div class="moon"></div>
+
+  <!-- Content -->
+  <div class="content">
+    <h1>OMG MOONUU</h1>
+
+    <p>
+      i just wanted to take a moment to tell you how grateful I am to youuu alwaysss.
+      With you, I never have to hide or pretend, thank you so much for letting me be
+      mysellf completely and bring out the side of me i craved the most to show out,
+      You make me so happyyy like my baby dayss, Thank you for being my safe space and
+      my favorite person. I am so unbelievably grateful for everything you do and every
+      memory we make and i look forward to make more, you always got meee i promise i
+      wont change or be a bothersome,, i will stay by your sideee alwaysss Ilysm,
+      Moonuuuu
+    </p>
+
+    <button class="btn" onclick="nextPage()">
+      next
+    </button>
+  </div>
+
+  <script>
+    // Falling stars
+    for(let i = 0; i < 130; i++){
+      let star = document.createElement("div");
+      star.classList.add("star");
+
+      star.style.left = Math.random() * 100 + "vw";
+      star.style.animationDuration = (Math.random() * 5 + 4) + "s";
+      star.style.animationDelay = Math.random() * 5 + "s";
+
+      let size = Math.random() * 3 + 1;
+      star.style.width = size + "px";
+      star.style.height = size + "px";
+
+      document.body.appendChild(star);
+    }
+
+    function nextPage(){
+      alert("Your next surprise page goes here ✨");
+    }
+  </script>
+
+</body>
+</html>
