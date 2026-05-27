@@ -27,7 +27,11 @@
     }
 
     body.page2{
-      background: radial-gradient(circle at top, #ffd6e8 0%, #ffbcd5 35%, #ff9fca 70%, #ff8dbd 100%);
+      background: radial-gradient(circle at top, #132a6b 0%, #050a1a 78%);
+    }
+
+    body.page3{
+      background: radial-gradient(circle at top, #2a2a2a 0%, #080808 45%, #000000 100%);
     }
 
     .star{
@@ -73,10 +77,17 @@
     }
 
     body.page2 h1{
-      color:#fff4f8;
+      color:#e7eeff;
       text-shadow:
-        0 0 14px rgba(255,255,255,0.7),
-        0 0 28px rgba(255,182,217,0.55);
+        0 0 14px rgba(173,194,255,0.85),
+        0 0 28px rgba(97,131,255,0.35);
+    }
+
+    body.page3 h1{
+      color:#f0f0f0;
+      text-shadow:
+        0 0 12px rgba(255,255,255,0.55),
+        0 0 30px rgba(255,255,255,0.18);
     }
 
     .small{
@@ -87,7 +98,11 @@
     }
 
     body.page2 .small{
-      color:#fff0f6;
+      color:#b9c7ff;
+    }
+
+    body.page3 .small{
+      color:#dddddd;
     }
 
     .btn{
@@ -107,11 +122,20 @@
     }
 
     body.page2 .btn{
-      background:#ffd7e8;
-      color:#5a1437;
+      background:#95adff;
+      color:#071024;
       box-shadow:
-        0 0 15px #ffd7e8,
-        0 0 35px rgba(255,215,232,0.7);
+        0 0 15px #95adff,
+        0 0 35px rgba(149,173,255,0.65);
+    }
+
+    body.page3 .btn{
+      background:#1a1a1a;
+      color:#f2f2f2;
+      box-shadow:
+        0 0 15px rgba(255,255,255,0.12),
+        0 0 35px rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.15);
     }
 
     .btn:hover{
@@ -123,8 +147,15 @@
 
     body.page2 .btn:hover{
       box-shadow:
-        0 0 25px #fff0f7,
-        0 0 50px rgba(255,215,232,1);
+        0 0 25px #c2cdff,
+        0 0 50px rgba(149,173,255,1);
+    }
+
+    body.page3 .btn:hover{
+      box-shadow:
+        0 0 20px rgba(255,255,255,0.18),
+        0 0 45px rgba(255,255,255,0.1);
+      transform:scale(1.06);
     }
 
     @keyframes fadeIn{
@@ -179,29 +210,45 @@
       margin-top:22px;
       font-size:1.15rem;
       line-height:1.8;
-      color:#fff7fb;
       max-width:820px;
       white-space:pre-wrap;
-      text-shadow:0 0 10px rgba(255,255,255,0.16);
     }
 
-    .page2-content{
+    .page1-content,
+    .page2-content,
+    .page3-content{
       display:none;
     }
 
-    body.page2 .page1-content{
-      display:none;
+    body:not(.page2):not(.page3) .page1-content{
+      display:block;
     }
 
     body.page2 .page2-content{
       display:block;
     }
 
-    body.page2 .moon{
+    body.page3 .page3-content{
       display:block;
     }
 
-    .next2{
+    body.page2 .moon,
+    body.page3 .moon{
+      display:block;
+    }
+
+    body.page2 .para{
+      color:#e9edff;
+      text-shadow:0 0 10px rgba(100,120,255,0.14);
+    }
+
+    body.page3 .para{
+      color:#e9e9e9;
+      text-shadow:0 0 10px rgba(255,255,255,0.08);
+    }
+
+    .next2,
+    .next3{
       margin-top:34px;
     }
   </style>
@@ -214,13 +261,19 @@
   <div class="content page1-content">
     <h1>for you, mooniee</h1>
     <div class="small">made by ara</div>
-    <button class="btn" onclick="nextPage()">next</button>
+    <button class="btn" onclick="goToPage2()">next</button>
   </div>
 
   <div class="content page2-content">
     <h1>OMG MOONUU</h1>
+    <div class="para">i just wanted to take a moment to tell you how grateful I am to youuu alwaysss. With you, I never have to hide or pretend, thank you so much for letting me be mysellf completely and bring out the side of me i craved the most to show out, You make me so happyyy like my baby dayss, Thank you for being my safe space and my favorite person. I am so unbelievably grateful for everything you do and every memory we make and i look forward to make more, you always got meee i promise i wont change or be a bothersome,, i will stay by your sideee alwaysss Ilysm, Moonuuuu</div>
+    <button class="btn next2" onclick="goToPage3()">next</button>
+  </div>
+
+  <div class="content page3-content">
+    <h1>MOONUU</h1>
     <div class="para">i wanna remind you to please take care of yourself, please eat on time, please stay hydrated and take care of your precious bodyy and healthh moonuu, you are the best in this world so preciousss and one who holds infinite value, i healed today so muchhh, i will give all my timee for you and be loyall in a platonic wayyy as long as you are able to be together, no force ever you are the boss</div>
-    <button class="btn next2" onclick="backPage()">beginning</button>
+    <button class="btn next3" onclick="beginning()">beginning</button>
   </div>
 
   <script>
@@ -239,12 +292,19 @@
       document.body.appendChild(star);
     }
 
-    function nextPage(){
+    function goToPage2(){
+      document.body.classList.remove("page3");
       document.body.classList.add("page2");
     }
 
-    function backPage(){
+    function goToPage3(){
       document.body.classList.remove("page2");
+      document.body.classList.add("page3");
+    }
+
+    function beginning(){
+      document.body.classList.remove("page2");
+      document.body.classList.remove("page3");
     }
   </script>
 
